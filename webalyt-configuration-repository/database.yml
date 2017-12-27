@@ -1,0 +1,5 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: sample
+      schema-action: create_if_not_exists

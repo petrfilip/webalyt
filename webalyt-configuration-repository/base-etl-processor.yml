@@ -1,0 +1,7 @@
+message: ahoj
+maintopic: incoming-to-webserver5
+
+spring:
+  kafka:
+    consumer:
+      group-id: incoming-to-webserver

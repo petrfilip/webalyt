@@ -1,0 +1,7 @@
+spring:
+  kafka:
+    bootstrap-servers: host1:http://localhost:9092
+    consumer:
+      auto-offset-reset: earliest
+      heartbeat-interval: 2000
+      enable-auto-commit: false
