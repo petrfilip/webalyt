@@ -8,6 +8,8 @@ import org.springframework.data.cassandra.mapping.Table;
 @Table
 public class Click extends WebalytEntity {
 
+    private String domPath;
+
     private Integer x;
 
     private Integer y;

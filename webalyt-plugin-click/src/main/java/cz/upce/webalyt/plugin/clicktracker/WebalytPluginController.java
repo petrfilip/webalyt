@@ -17,7 +17,6 @@ public class WebalytPluginController extends SimpleMessageProcessor<Click> {
 
     @Override
     protected void processMessage(Click object) {
-        //object.setId(UUID.randomUUID());
         clickRepository.save(object);
     }
 }
