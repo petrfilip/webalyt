@@ -1,5 +1,6 @@
 package cz.upce.webalyt.plugin.core;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 public class WebalytEntity {
 
     @PrimaryKey
+    @SerializedName("wri")
     private WebalytPrimaryKey webalytPrimaryKey = new WebalytPrimaryKey();
 
     public String getDeviceId() {

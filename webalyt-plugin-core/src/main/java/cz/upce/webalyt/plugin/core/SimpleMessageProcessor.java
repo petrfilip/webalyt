@@ -22,10 +22,8 @@ public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
 
     public SimpleMessageProcessor() {
 
-
-
         gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+                .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
                 .create();
         parameterizedType = new ParameterizedType() {
             @Override
@@ -47,14 +45,13 @@ public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
 
     @KafkaListener(topics = "${spring.kafka.consumer.group-id}")
     public void receive(ConsumerRecord<?, ?> record) {
-        messageProcessingDelay = record.timestamp() - new Date().getTime();
-        System.out.println(messageProcessingDelay);
+        messageProcessingDelay = new Date().getTime() - record.timestamp();
+        System.out.println("Delay: " + messageProcessingDelay);
 
         Collection<T> collection = gson.fromJson(String.valueOf(record.value()), parameterizedType);
-        if (collection.size() > 0) {
+        if (!collection.isEmpty()) {
             for (T object : collection) {
-                object.setDeviceId(record.key().toString());
-                object.setTimestamp(new Date()); //todo vzít datum ze zprávy -- record.timestamp()
+                object.setDeviceId(record.key().toString()); //todo vzít ze zprávy
                 processMessage(object);
             }
             System.out.println(collection.size());

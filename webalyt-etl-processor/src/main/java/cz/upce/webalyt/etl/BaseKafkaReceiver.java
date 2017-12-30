@@ -51,7 +51,7 @@ public class BaseKafkaReceiver {
         String deviceId = ((Map)((List)retMap.get("WCdevId")).get(0)).get("fp").toString(); //todo: co je fp?
 
         for (Map.Entry<String, Object> entry : retMap.entrySet()) {
-            kafkaSender.send(entry.getKey(), deviceId, entry.getValue().toString());
+            kafkaSender.send(entry.getKey(), deviceId, new Gson().toJson(entry.getValue()));
         }
 
         System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());

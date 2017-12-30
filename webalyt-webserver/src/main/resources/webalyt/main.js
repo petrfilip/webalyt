@@ -28,7 +28,6 @@ var Webalyt =  function(webalytUrlTargetAddress) {
         }
     }, 3000);
 
-    //base method
     function mergeData(obj, plugin, message) {
         if (message !== undefined && message.length > 0) {
             obj[plugin] = message;
@@ -36,7 +35,6 @@ var Webalyt =  function(webalytUrlTargetAddress) {
         return obj;
     }
 
-    //base method
     function sendData(obj) {
         if (!isEmpty(obj)) {
             //persistent field
@@ -57,6 +55,10 @@ var Webalyt =  function(webalytUrlTargetAddress) {
         }
         return JSON.stringify(obj) === JSON.stringify({});
     }
+
+    // function createWebalytRecordIdentifier() {
+    //
+    // }
 };
 
 var webalyt = new Webalyt("http://localhost:8080/");

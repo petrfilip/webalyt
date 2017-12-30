@@ -6,6 +6,9 @@ var mousePositionPlugin = {
         console.log(this.mousePositions.length);
         document.body.addEventListener('mousemove', function (e) {
             var mp = {};
+            var wri = {};
+            wri.timestamp = new Date();
+            mp.wri = wri;
             mp.x = e.clientX;
             mp.y = e.clientY;
             mousePositionPlugin.mousePositions.push(mp);
@@ -21,5 +24,4 @@ var mousePositionPlugin = {
         return this.mousePositions;
     }
 };
-mousePositionPlugin.onInit();
 webalyt.addPlugin(mousePositionPlugin);
