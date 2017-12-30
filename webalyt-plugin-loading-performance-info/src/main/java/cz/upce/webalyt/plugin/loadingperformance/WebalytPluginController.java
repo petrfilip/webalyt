@@ -18,7 +18,7 @@ public class WebalytPluginController extends SimpleMessageProcessor<LoadingPerfo
     @Override
     protected void processMessage(LoadingPerformance object) {
         //object.setId(UUID.randomUUID());
-        //loadingPerformanceRepository.save(object);
-        System.out.println(object);
+        loadingPerformanceRepository.save(object);
+//        System.out.println(object);
     }
 }
