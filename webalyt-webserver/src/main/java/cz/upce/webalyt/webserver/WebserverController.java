@@ -36,6 +36,8 @@ public class WebserverController {
     @Autowired
     private BaseKafkaSender sender;
 
+    public static final String LINE_SEPERATOR = System.getProperty("line.separator");
+
 
     @CrossOrigin
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = "application/json")
@@ -68,6 +70,15 @@ public class WebserverController {
 
         StringBuilder jsCode = new StringBuilder();
 
+        try {
+            jsCode.append(LINE_SEPERATOR);
+            jsCode.append(readFileFromClassPath("/webalyt/fingerprint2.min.js"));
+            jsCode.append(LINE_SEPERATOR);
+            jsCode.append(readFileFromClassPath("/webalyt/main.js"));
+            jsCode.append(LINE_SEPERATOR);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Gson gson = gsonBuilder.create();
         HashMap<String, InstanceInfo> instanceInfoHashMap = gson.fromJson(body, listType);
@@ -82,26 +93,17 @@ public class WebserverController {
                     for (String fileName : files.getBody()) {
                         String fileUrl = url + "/" + fileName;
                         ResponseEntity<String> exchange1 = restTemplate.exchange(fileUrl, HttpMethod.GET, HttpEntity.EMPTY, String.class);
-                        jsCode.append("//start " + fileUrl);
-                        jsCode.append(System.getProperty("line.separator"));
+                        jsCode.append("//start ").append(fileUrl);
+                        jsCode.append(LINE_SEPERATOR);
                         jsCode.append(exchange1.getBody());
-                        jsCode.append(System.getProperty("line.separator"));
-                        jsCode.append("//end " + fileUrl);
-                        jsCode.append(System.getProperty("line.separator"));
+                        jsCode.append(LINE_SEPERATOR);
+                        jsCode.append("//end ").append(fileUrl);
+                        jsCode.append(LINE_SEPERATOR);
                     }
                 }
             }
         }
 
-        try {
-            jsCode.append(System.getProperty("line.separator"));
-            jsCode.append(readFileFromClassPath("/webalyt/fingerprint2.min.js"));
-            jsCode.append(System.getProperty("line.separator"));
-            jsCode.append(readFileFromClassPath("/webalyt/main.js"));
-            jsCode.append(System.getProperty("line.separator"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         return jsCode.toString();
 
