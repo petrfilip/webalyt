@@ -1,0 +1,20 @@
+server:
+  port: 0
+
+spring:
+  kafka:
+   consumer:
+        group-id: url-recorder
+  application:
+    name: plugin-url-recorder
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: ${spring.application.name}, database, discovery-client, kafka
+
+webalyt:
+  serviceType: plugin
+  kafkaTopic: url-recorder
+  objectId: url-recorder
+
+
