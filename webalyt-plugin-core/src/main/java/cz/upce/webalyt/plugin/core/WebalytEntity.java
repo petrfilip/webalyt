@@ -12,7 +12,7 @@ import java.util.Date;
 public class WebalytEntity {
 
     @PrimaryKey
-    @SerializedName("wri")
+    @SerializedName("wri") //webalyt record identifier
     private WebalytPrimaryKey webalytPrimaryKey = new WebalytPrimaryKey();
 
     public String getDeviceId() {
