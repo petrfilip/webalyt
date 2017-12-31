@@ -22,4 +22,13 @@ public class DeviceInfo extends WebalytEntity {
     private Integer scrColorDepth;
     private Integer scrPixelDepth;
 
+    private String fullUserAgent;
+    private String browser;
+    private Integer browserMajorVersion;
+    private String browserVersion;
+    private String os;
+    private String osVersion;
+    private Boolean isCookieEnabled;
+    private Boolean isMobile;
+
 }
