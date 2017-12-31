@@ -1,0 +1,20 @@
+server:
+  port: 0
+
+spring:
+  kafka:
+      consumer:
+        group-id: scroll-recorder
+  application:
+    name: plugin-scroll-recorder
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: ${spring.application.name}, database, discovery-client, kafka
+
+webalyt:
+  serviceType: plugin
+  kafkaTopic: scroll-recorder
+  objectId: scroll-recorder
+
+
