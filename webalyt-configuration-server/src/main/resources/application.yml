@@ -9,7 +9,7 @@ spring:
       name: ${spring.application.name}
       server:
         git:
-          uri: /home/pfilip/Projekty/School/PHD/webalyt-configuration-repository
+          uri: /home/pfilip/Projekty/School/PHD/webalyt/webalyt-configuration-repository
         bootstrap: false
 
 
