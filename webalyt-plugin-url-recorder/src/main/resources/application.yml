@@ -2,9 +2,6 @@ server:
   port: 0
 
 spring:
-  kafka:
-   consumer:
-        group-id: url-recorder
   application:
     name: plugin-url-recorder
   cloud:

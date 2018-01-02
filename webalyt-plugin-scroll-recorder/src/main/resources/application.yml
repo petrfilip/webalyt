@@ -2,9 +2,6 @@ server:
   port: 0
 
 spring:
-  kafka:
-      consumer:
-        group-id: scroll-recorder
   application:
     name: plugin-scroll-recorder
   cloud:
