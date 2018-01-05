@@ -1,6 +1,8 @@
 package cz.upce.webalyt.plugin.domrecorder;
 
 import cz.upce.webalyt.plugin.core.SimpleMessageProcessor;
+import cz.upce.webalyt.plugin.urlrecorder.entity.RecordedDom;
+import cz.upce.webalyt.plugin.urlrecorder.repository.RecordedDomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

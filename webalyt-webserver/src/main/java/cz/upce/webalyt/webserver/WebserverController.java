@@ -49,8 +49,7 @@ public class WebserverController {
     @RequestMapping(value = "/script.js", method = RequestMethod.GET)
     public String getPluginJavascripts() {
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> exchange = restTemplate.exchange("http://localhost:8989/services", HttpMethod.GET, HttpEntity.EMPTY,
-                String.class);
+        ResponseEntity<String> exchange = restTemplate.exchange("http://localhost:8989/services", HttpMethod.GET, HttpEntity.EMPTY, String.class);
         String body = exchange.getBody();
         Type listType = new TypeToken<HashMap<String, InstanceInfo>>() {
         }.getType();

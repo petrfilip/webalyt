@@ -1,38 +1,55 @@
-var urlRecorder = {
-    shortName: "url-recorder",
-    fullName: "Record url",
-    urls: [],
+var resizeRecorder = {
+    shortName: "resize-recorder",
+    fullName: "Record resizing",
+    sizes: [],
     methodBody: function () {
         //on load
         window.addEventListener('load', function (e) {
-            var wri = {};
-            wri.timestamp = new Date();
-
-            var o = {
-                wri: wri,
-                fullUrl: window.location.href,
-                pathName: window.location.pathname,
-                hash: window.location.hash,
-                search: window.location.search
-            };
-
-            urlRecorder.urls.push(o);
+            processData();
         });
 
-        //todo on address/hash changed
+        //on size changed
+        window.addEventListener('resize', function (e) {
+            processData();
+        });
+
+        //on device orientation changed
+        window.addEventListener('orientationchange', function (e) {
+            processData();
+        });
+
+        function processData() {
+            var wri = {};
+            wri.timestamp = new Date();
+            var o = prepareData(wri);
+            resizeRecorder.sizes.push(o);
+        }
+
+        function prepareData(wri) {
+            var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
+
+            return {
+                wri: wri,
+                width: window.innerWidth,
+                height: window.innerHeight,
+                zoom: document.body.clientWidth / window.innerWidth,
+                orientation: orientation.type
+            };
+        }
+
 
     },
     onInit: function () {
-        this.urls = [];
+        this.sizes = [];
     },
     onAfterSend: function () {
         this.onInit();
     },
     getDataForSending: function () {
-        return this.urls;
+        return this.sizes;
     }
 
 };
 
-webalyt.addPlugin(urlRecorder);
+webalyt.addPlugin(resizeRecorder);
 

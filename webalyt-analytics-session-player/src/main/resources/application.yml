@@ -1,0 +1,17 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: analytics-session-player
+  cloud:
+    config:
+      uri: http://localhost:8888
+      name: ${spring.application.name}, database, discovery-client, kafka
+
+webalyt:
+  serviceType: analytics
+  kafkaTopic: session-player
+  objectId: session-player
+
+
