@@ -9,6 +9,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.Date;
+import java.util.UUID;
 
 public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
 
@@ -17,8 +18,6 @@ public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
     private long messageProcessingDelay;
 
     private final Gson gson;
-
-
 
     public SimpleMessageProcessor() {
 
@@ -51,10 +50,11 @@ public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
         Collection<T> collection = gson.fromJson(String.valueOf(record.value()), parameterizedType);
         if (!collection.isEmpty()) {
             for (T object : collection) {
-                object.setDeviceId(record.key().toString()); //todo vzít ze zprávy
+                object.setUuid(UUID.randomUUID());
+                object.setPageViewId(record.key().toString()); //todo vzít ze zprávy
                 processMessage(object);
             }
-            System.out.println(collection.size());
+            System.out.println("Incoming count of data: " + collection.size());
         }
     }
 

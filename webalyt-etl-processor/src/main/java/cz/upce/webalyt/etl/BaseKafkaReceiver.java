@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 @Component
@@ -48,10 +51,10 @@ public class BaseKafkaReceiver {
                 }.getType()
         );
 
-        String deviceId = ((Map)((List)retMap.get("WCdevId")).get(0)).get("fp").toString(); //todo: co je fp?
+        String pageViewId = (String) retMap.get("pageViewId");
 
         for (Map.Entry<String, Object> entry : retMap.entrySet()) {
-            kafkaSender.send(entry.getKey(), deviceId, new Gson().toJson(entry.getValue()));
+            kafkaSender.send(entry.getKey(), pageViewId, new Gson().toJson(entry.getValue()));
         }
 
         System.out.printf("offset = %d, key = %s, value = %s\n", record.offset(), record.key(), record.value());

@@ -41,18 +41,18 @@ public class MousePluginController extends SimpleMessageProcessor<MousePosition>
 
 
     protected void hint(MousePosition object) {
-        Integer ifPresent = (Integer) cache.getIfPresent(object.getDeviceId());
+        Integer ifPresent = (Integer) cache.getIfPresent(object.getPageViewId());
         if (ifPresent == null) {
-            cache.put(object.getDeviceId(), 0);
+            cache.put(object.getPageViewId(), 0);
             ifPresent = 0;
         } else {
             ifPresent++;
-            cache.put(object.getDeviceId(), ifPresent);
+            cache.put(object.getPageViewId(), ifPresent);
         }
 
         if (ifPresent > 100) {
             System.out.println("HINTED");
-            cache.put(object.getDeviceId(), 0);
+            cache.put(object.getPageViewId(), 0);
         }
 
     }

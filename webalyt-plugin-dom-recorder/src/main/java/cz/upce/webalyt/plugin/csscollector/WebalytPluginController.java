@@ -1,4 +1,4 @@
-package cz.upce.webalyt.plugin.domrecorder;
+package cz.upce.webalyt.plugin.csscollector;
 
 import cz.upce.webalyt.plugin.core.SimpleMessageProcessor;
 import cz.upce.webalyt.plugin.urlrecorder.entity.RecordedDom;
@@ -19,6 +19,7 @@ public class WebalytPluginController extends SimpleMessageProcessor<RecordedDom>
 
     @Override
     protected void processMessage(RecordedDom object) {
-        recordedDomRepository.save(object);
+        RecordedDom save = recordedDomRepository.save(object);
+        System.out.println(save);
     }
 }

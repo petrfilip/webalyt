@@ -1,14 +1,15 @@
 package cz.upce.webalyt.plugin.core;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotNull;
 
+//import org.springframework.boot.context.properties.ConfigurationProperties;
+
 @Component
 @Data
-@ConfigurationProperties("webalyt")
+//@ConfigurationProperties("webalyt")
 public class WebalytPluginConfig {
 
     @NotNull

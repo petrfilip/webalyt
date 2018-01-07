@@ -1,6 +1,6 @@
 var scrollRecorder = {
-    shortName: "scroll-recorder",
-    fullName: "Scroll recorder",
+    shortName: "scroll-tracker",
+    fullName: "Scroll tracker",
     scrollList: [],
     methodBody: function () {
 
@@ -9,8 +9,8 @@ var scrollRecorder = {
             wri.timestamp = new Date();
             var o = {
                 wri: wri,
-                top: Math.round(window.pageYOffset || document.documentElement.scrollTop),
-                left: Math.round(window.pageXOffset || document.documentElement.scrollLeft)
+                x: Math.round(window.pageXOffset || document.documentElement.scrollLeft),
+                y: Math.round(window.pageYOffset || document.documentElement.scrollTop)
             };
 
             scrollRecorder.scrollList.push(o);
@@ -23,8 +23,8 @@ var scrollRecorder = {
             wri.timestamp = new Date();
             var o = {
                 wri: wri,
-                top: Math.round(this.scrollY),
-                left: Math.round(this.scrollX)
+                x: Math.round(this.scrollX),
+                y: Math.round(this.scrollY)
             };
 
             scrollRecorder.scrollList.push(o);

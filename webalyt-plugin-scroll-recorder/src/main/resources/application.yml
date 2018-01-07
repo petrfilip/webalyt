@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: plugin-scroll-recorder
+    name: plugin-scroll-tracker
   cloud:
     config:
       uri: http://localhost:8888
@@ -11,7 +11,7 @@ spring:
 
 webalyt:
   serviceType: plugin
-  kafkaTopic: scroll-recorder
-  objectId: scroll-recorder
+  kafkaTopic: scroll-tracker
+  objectId: scroll-tracker
 
 

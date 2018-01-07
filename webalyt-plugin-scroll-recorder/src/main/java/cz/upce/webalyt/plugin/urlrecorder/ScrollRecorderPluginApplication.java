@@ -8,9 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @EnableDiscoveryClient
 @ComponentScan("cz.upce.webalyt")
-public class UrlRecorderPluginApplication {
+public class ScrollRecorderPluginApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(UrlRecorderPluginApplication.class, args);
+        SpringApplication.run(ScrollRecorderPluginApplication.class, args);
     }
 }

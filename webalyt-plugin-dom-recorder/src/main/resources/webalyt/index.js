@@ -15,19 +15,17 @@ var domRecorder = {
             var container = document.documentElement || document.body;
 
             var edits = pere.record(container, function(edit) {
-                console.log(edit);
+                //console.log(edit);
                 //var editsel = '[\n' + edits.map(JSON.stringify).join(',\n') + '\n]';
-
-
 
                 var wri = {};
                 wri.timestamp = new Date();
 
                 var o = {
                     wri: wri,
-                    changes: edit
+                    mutation: JSON.stringify(edit)
                 };
-                console.log(o);
+                // console.log(o);
                 domRecorder.urls.push(o);
             });
             console.log(edits);

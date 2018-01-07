@@ -17,7 +17,7 @@ public class ClassifiedKafkaSender {
     public void send(String kafkaTopic, String key, String data) {
         int partitionCount = kafkaTemplate.partitionsFor(kafkaTopic).size();
         System.out.println("sending data='{" + data + "}' to topic='{" + kafkaTopic + "} to partition = {" + partitionCount + "}'");
-        kafkaTemplate.send(kafkaTopic, partition(key.hashCode(), partitionCount), key, data); //todo vybrat partition podle deviceId a přidat key -> což je deviceId
+        kafkaTemplate.send(kafkaTopic, partition(key.hashCode(), partitionCount), key, data); //todo vybrat partition podle deviceId a přidat key
     }
 
     public int partition(int key, int a_numPartitions) {

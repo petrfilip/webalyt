@@ -1,34 +1,31 @@
 package cz.upce.webalyt.plugin.core;
 
-import com.google.gson.annotations.SerializedName;
 import lombok.Data;
-import org.springframework.data.cassandra.mapping.PrimaryKey;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @MappedSuperclass
-public class WebalytEntity {
+public class WebalytEntity implements Comparable<WebalytEntity> {
 
-    @PrimaryKey
-    @SerializedName("wri") //webalyt record identifier
-    private WebalytPrimaryKey webalytPrimaryKey = new WebalytPrimaryKey();
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private UUID uuid;
 
-    public String getDeviceId() {
-        return webalytPrimaryKey.getDeviceId();
+    private String pageViewId;
+
+    private Date timestamp;
+
+    @Override
+    public int compareTo(WebalytEntity o) {
+        if (o.getTimestamp().after(o.getTimestamp()))
+            return -1;
+        else
+            return 1;
     }
-
-    public void setDeviceId(String deviceId) {
-        webalytPrimaryKey.setDeviceId(deviceId);
-    }
-
-    public Date getTimestamp() {
-        return webalytPrimaryKey.getTimestamp();
-    }
-
-    public void setTimestamp(Date timestamp) {
-        webalytPrimaryKey.setTimestamp(timestamp);
-    }
-
 }

@@ -1,55 +1,37 @@
-var resizeRecorder = {
-    shortName: "resize-recorder",
-    fullName: "Record resizing",
-    sizes: [],
+var urlRecorder = {
+    shortName: "url-recorder",
+    fullName: "Record url",
+    urls: [],
     methodBody: function () {
         //on load
         window.addEventListener('load', function (e) {
-            processData();
-        });
-
-        //on size changed
-        window.addEventListener('resize', function (e) {
-            processData();
-        });
-
-        //on device orientation changed
-        window.addEventListener('orientationchange', function (e) {
-            processData();
-        });
-
-        function processData() {
             var wri = {};
             wri.timestamp = new Date();
-            var o = prepareData(wri);
-            resizeRecorder.sizes.push(o);
-        }
 
-        function prepareData(wri) {
-            var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
-
-            return {
+            var o = {
                 wri: wri,
-                width: window.innerWidth,
-                height: window.innerHeight,
-                zoom: document.body.clientWidth / window.innerWidth,
-                orientation: orientation.type
+                fullUrl: window.location.href,
+                pathName: window.location.pathname,
+                hash: window.location.hash,
+                search: window.location.search
             };
-        }
 
+            urlRecorder.urls.push(o);
+        });
+
+        //todo on address/hash changed
 
     },
     onInit: function () {
-        this.sizes = [];
+        this.urls = [];
     },
     onAfterSend: function () {
         this.onInit();
     },
     getDataForSending: function () {
-        return this.sizes;
+        return this.urls;
     }
 
 };
 
-webalyt.addPlugin(resizeRecorder);
-
+webalyt.addPlugin(urlRecorder);
