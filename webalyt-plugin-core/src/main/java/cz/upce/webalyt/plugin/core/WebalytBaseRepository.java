@@ -5,10 +5,9 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.UUID;
 
 @NoRepositoryBean
-public interface WebalytBaseRepository<T extends WebalytEntity> extends CrudRepository<T, UUID> {
+public interface WebalytBaseRepository<T extends WebalytEntity> extends CrudRepository<T, Long> {
 
     List<T> findByPageViewId(@Param("pageviewid") String pageViewId);
 

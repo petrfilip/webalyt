@@ -5,11 +5,8 @@ var urlRecorder = {
     methodBody: function () {
         //on load
         window.addEventListener('load', function (e) {
-            var wri = {};
-            wri.timestamp = new Date();
-
             var o = {
-                wri: wri,
+                timestamp: new Date(),
                 fullUrl: window.location.href,
                 pathName: window.location.pathname,
                 hash: window.location.hash,

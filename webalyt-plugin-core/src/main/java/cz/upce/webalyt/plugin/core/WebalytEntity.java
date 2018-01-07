@@ -2,23 +2,22 @@ package cz.upce.webalyt.plugin.core;
 
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
-import java.util.UUID;
 
 @Data
 @MappedSuperclass
-public class WebalytEntity implements Comparable<WebalytEntity> {
+public class WebalytEntity implements Comparable<WebalytEntity>, Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private UUID uuid;
+    private Long id;
+
 
     private String pageViewId;
 
+    @Column(columnDefinition = "DATETIME(3)")
     private Date timestamp;
 
     @Override

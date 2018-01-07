@@ -15,9 +15,7 @@ var onClick = {
     methodBody: function () {
         window.addEventListener('click', function (e) {
             var cp = {};
-            var wri = {};
-            wri.timestamp = new Date();
-            cp.wri = wri;
+            cp.timestamp = new Date();
             cp.domPath = onClick.getDomPath(e.target);
             cp.x = e.clientX;
             cp.y = e.clientY;

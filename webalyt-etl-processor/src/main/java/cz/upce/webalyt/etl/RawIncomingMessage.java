@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.UUID;
 
 @Table
 @Data
@@ -13,10 +12,11 @@ public class RawIncomingMessage {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     private Date timestamp;
 
+    @Column(columnDefinition = "TEXT")
     private String message;
 
 }

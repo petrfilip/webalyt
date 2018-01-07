@@ -18,11 +18,9 @@ var domRecorder = {
                 //console.log(edit);
                 //var editsel = '[\n' + edits.map(JSON.stringify).join(',\n') + '\n]';
 
-                var wri = {};
-                wri.timestamp = new Date();
 
                 var o = {
-                    wri: wri,
+                    timestamp: new Date(),
                     mutation: JSON.stringify(edit)
                 };
                 // console.log(o);

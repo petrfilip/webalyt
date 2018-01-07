@@ -38,8 +38,10 @@ public class SessionCollectorServiceImpl implements SessionCollectorService {
         Collections.sort(webalytEntities, (o1, o2) -> {
             if(o1.getTimestamp().after(o2.getTimestamp())) {
                 return 1;
-            } else {
+            } else if (o1.getTimestamp().before(o2.getTimestamp())){
                 return -1;
+            } else {
+                return 0;
             }
         });
         return webalytEntities;

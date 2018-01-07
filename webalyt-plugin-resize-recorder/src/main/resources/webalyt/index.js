@@ -19,17 +19,15 @@ var resizeRecorder = {
         });
 
         function processData() {
-            var wri = {};
-            wri.timestamp = new Date();
-            var o = prepareData(wri);
+            var o = prepareData();
             resizeRecorder.sizes.push(o);
         }
 
-        function prepareData(wri) {
+        function prepareData() {
             var orientation = screen.orientation || screen.mozOrientation || screen.msOrientation;
 
             return {
-                wri: wri,
+                timestamp: new Date(),
                 width: window.innerWidth,
                 height: window.innerHeight,
                 zoom: document.body.clientWidth / window.innerWidth,

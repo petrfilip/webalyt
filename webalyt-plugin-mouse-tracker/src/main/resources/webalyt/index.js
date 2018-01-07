@@ -6,9 +6,7 @@ var mousePositionPlugin = {
         console.log(this.mousePositions.length);
         document.body.addEventListener('mousemove', function (e) {
             var mp = {};
-            var wri = {};
-            wri.timestamp = new Date();
-            mp.wri = wri;
+            mp.timestamp = new Date();
             mp.x = e.clientX;
             mp.y = e.clientY;
             mousePositionPlugin.mousePositions.push(mp);

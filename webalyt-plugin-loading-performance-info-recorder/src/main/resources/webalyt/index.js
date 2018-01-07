@@ -12,9 +12,7 @@ var onLoadPerformanceInfo = {
             var fetchTime = timing.responseEnd - timing.fetchStart;
 
             var pl = {};
-            var wri = {};
-            wri.timestamp = new Date();
-            pl.wri = wri;
+            pl.timestamp = new Date();
             pl.userTime = userTime;
             pl.dns = dns;
             pl.connection = connection;

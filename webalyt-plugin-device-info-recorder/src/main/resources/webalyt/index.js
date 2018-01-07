@@ -9,9 +9,6 @@ var deviceInfo = {
     methodBody: function () {
         window.addEventListener('load', function (e) {
 
-            var wri = {};
-            wri.timestamp = new Date();
-            var fp;
 
             // new Fingerprint2().get(function (result, components) {
             //     var fpo = {};
@@ -20,7 +17,7 @@ var deviceInfo = {
             // });
 
             var o = {
-                wri: wri,
+                timestamp: new Date(),
                 // deviceId: fp,
                 // screen
                 sizeScreenW: screen.width,

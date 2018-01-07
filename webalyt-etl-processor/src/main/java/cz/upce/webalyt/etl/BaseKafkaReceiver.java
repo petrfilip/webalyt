@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.CountDownLatch;
 
 @Component
@@ -40,7 +39,6 @@ public class BaseKafkaReceiver {
         messageProcessingDelay = record.timestamp() - new Date().getTime();
         System.out.println(messageProcessingDelay);
         RawIncomingMessage rawIncomingMessage = new RawIncomingMessage();
-        rawIncomingMessage.setId(UUID.randomUUID()); //todo tady má být stále stejné ID, nikoliv random
         rawIncomingMessage.setTimestamp(new Date());
         rawIncomingMessage.setMessage(String.valueOf(record.value()));
         repository.save(rawIncomingMessage); //todo - tady by se mělo ukládat na hadoop -- zatím uložení jen do DB
