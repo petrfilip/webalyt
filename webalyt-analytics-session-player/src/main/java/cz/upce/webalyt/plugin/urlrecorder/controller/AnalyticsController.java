@@ -31,8 +31,7 @@ public class AnalyticsController {
 
     @GetMapping("/session-player/{id}")
     public String sessionPlayer(@PathVariable String id, Map<String, Object> model) {
-        List<WebalytEntity> eventsByPageView = sessionCollectorService.getByPageViewId(id);
-        model.put("events", eventsByPageView);
+        model.put("sessionId", id);
         return "session-player";
     }
 }

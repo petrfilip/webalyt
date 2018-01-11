@@ -14,10 +14,10 @@ public class ClassifiedKafkaSender {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    public void send(String kafkaTopic, String key, String data) {
+    public void send(String kafkaTopic,  String pageViewId, String data) {
         int partitionCount = kafkaTemplate.partitionsFor(kafkaTopic).size();
         System.out.println("sending data='{" + data + "}' to topic='{" + kafkaTopic + "} to partition = {" + partitionCount + "}'");
-        kafkaTemplate.send(kafkaTopic, partition(key.hashCode(), partitionCount), key, data); //todo vybrat partition podle deviceId a přidat key
+        kafkaTemplate.send(kafkaTopic, partition(pageViewId.hashCode(), partitionCount), pageViewId, data);
     }
 
     public int partition(int key, int a_numPartitions) {

@@ -1,0 +1,22 @@
+
+#dom {
+    border: 2px solid black;
+    overflow:hidden;
+}
+
+#timeline{
+    width: 100px;
+    height: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+    background: rgba(0,0,0,.3);
+
+}
+#playhead{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-top: 1px;
+    background: rgba(0, 0, 0,1);
+
+}

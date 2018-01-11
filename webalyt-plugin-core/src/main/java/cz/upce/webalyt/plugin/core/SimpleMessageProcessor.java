@@ -12,6 +12,8 @@ import java.util.Date;
 
 public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
 
+    public static final String IDENTIFIER_DELIMITER = "&";
+
     private final ParameterizedType parameterizedType;
 
     private long messageProcessingDelay;
@@ -42,14 +44,14 @@ public abstract class SimpleMessageProcessor<T extends WebalytEntity> {
     }
 
     @KafkaListener(topics = "${spring.kafka.consumer.group-id}")
-    public void receive(ConsumerRecord<?, ?> record) {
+    public void receive(ConsumerRecord<?, String> record) {
         messageProcessingDelay = new Date().getTime() - record.timestamp();
         System.out.println("Delay: " + messageProcessingDelay);
 
         Collection<T> collection = gson.fromJson(String.valueOf(record.value()), parameterizedType);
         if (!collection.isEmpty()) {
             for (T object : collection) {
-                object.setPageViewId(record.key().toString()); //todo vzít ze zprávy
+                object.setPageViewId((String) record.key());
                 processMessage(object);
             }
             System.out.println("Incoming count of data: " + collection.size());
