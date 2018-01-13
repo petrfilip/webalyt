@@ -18,7 +18,7 @@ public class DataController {
     private SessionCollectorService sessionCollectorService;
 
     @CrossOrigin
-    @GetMapping("/session-activities/{id}")
+    @GetMapping("/pageview-activities/{id}")
     public List<WebalytSessionPlayerEventDto> getSessionActivityById(@PathVariable String id) {
         return sessionCollectorService.getByPageViewId(id)
                 .stream()

@@ -3,31 +3,67 @@
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://localhost:8081/">Webalyt</a>
+            <a class="navbar-brand" onclick="openNav()">Webalyt</a>
 
             <div class="btn-group">
                 <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-step-backward"></span>
                 </button>
-                <button type="button" class="btn btn-primary" onclick="loadData();"><span
+                <button type="button" class="btn btn-primary"><span
                         class="glyphicon glyphicon-play"></span></button>
                 <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-step-forward"></span>
                 </button>
             </div>
 
-            <div id="timeline">
-                <div id="playhead"></div>
-            </div>
+        <#--<div id="timeline">-->
+        <#--<div id="playhead"></div>-->
+        <#--</div>-->
         </div>
     </div>
 </nav>
 
+<div class="row">
+    <div class="col-sm-2 session-sidenav">
 
-<iframe scrolling="no"
-        src=""
-        id="dom"
-        style="pointer-events: none; transform-origin: 0px 0px 0px; border: 1px solid black; width: 100%; height: 100%; transform: scale(0.5, 0.5);"></iframe>
+        <#list pageviews as item>
+            <div>
+                <a href="#${item.getPageViewId()}"
+                   onclick="loadData('${item.getPageViewId()}');">Replay ${item.getPageViewId()}</a>
+            </div>
+        <#else>
+            <p>No page view recorded</p>
+        </#list>
+
+    </div>
+    <div class="col-sm-8">
 
 
+        <iframe scrolling="no"
+                src=""
+                id="dom"
+                style="pointer-events: none; transform-origin: 0px 0px 0px; border: 1px solid black; width: 100%; height: 100%; transform: scale(0.5, 0.5);"></iframe>
+    </div>
+    <div class="col-sm-2 session-sidenav">
+        <div>
+            <h4>Loading performance</h4>
+        </div>
+        <div>
+            <h4>Device info</h4>
+        </div>
+        <div>
+            <h4>User informations</h4>
+        </div>
+        <div>
+            <h4>Tags</h4>
+        </div>
+        <div>
+            <h4>Notes</h4>
+            <textarea></textarea>
+        </div>
+    </div>
+
+</div>
+
+</div>
 <script>
 
 
@@ -202,8 +238,8 @@
         return results == null ? null : results[1];
     }
 
-    function loadData() {
-        var url = "http://localhost:8081/session-activities/${sessionId}";
+    function loadData(pageViewId) {
+        var url = "http://localhost:8081/pageview-activities/" + pageViewId;
         fetch(url).then(function (response) {
             response.text().then(function (text) {
                 var events = JSON.parse(text);

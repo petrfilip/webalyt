@@ -1,7 +1,7 @@
 package cz.upce.webalyt.plugin.urlrecorder.controller;
 
-import cz.upce.webalyt.plugin.core.WebalytEntity;
-import cz.upce.webalyt.plugin.urlrecorder.repository.DeviceInfoRepository;
+import cz.upce.webalyt.plugin.urlrecorder.entity.PageView;
+import cz.upce.webalyt.plugin.urlrecorder.repository.PageViewRepository;
 import cz.upce.webalyt.plugin.urlrecorder.service.SessionCollectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,23 +15,25 @@ import java.util.Map;
 @Controller
 public class AnalyticsController {
 
-    @Autowired
-    private DeviceInfoRepository deviceInfoRepository;
 
     @Autowired
     private SessionCollectorService sessionCollectorService;
 
+    @Autowired
+    private PageViewRepository pageViewRepository;
+
     @GetMapping("/")
     public String welcome(Model model) {
-//        List<WebalytPrimaryKey> distinctDeviceInfo = deviceInfoRepository.findDistinctDeviceId().stream().map(WebalytEntity::getWebalytPrimaryKey).collect(Collectors.toList());
-        List<? extends WebalytEntity> all = deviceInfoRepository.findAll();
-        model.addAttribute("deviceIds", all);
+        Iterable<PageView> all = pageViewRepository.findAll();
+        model.addAttribute("sessionIds", all);
         return "session-list";
     }
 
-    @GetMapping("/session-player/{id}")
-    public String sessionPlayer(@PathVariable String id, Map<String, Object> model) {
-        model.put("sessionId", id);
+    @GetMapping("/session-player/{sessionId}")
+    public String sessionPlayer(@PathVariable String sessionId, Map<String, Object> model) {
+        List<PageView> pageViews = pageViewRepository.findByWebsiteIdAndSessionId("100", sessionId);
+        model.put("pageviews",pageViews);
+        model.put("sessionId", sessionId);
         return "session-player";
     }
 }
