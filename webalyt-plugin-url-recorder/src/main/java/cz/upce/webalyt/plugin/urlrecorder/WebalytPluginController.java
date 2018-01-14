@@ -1,8 +1,8 @@
 package cz.upce.webalyt.plugin.urlrecorder;
 
+import cz.upce.webalyt.analytics.sessionplayertest.entity.RecordedUrl;
+import cz.upce.webalyt.analytics.sessionplayertest.repository.RecordedUrlRepository;
 import cz.upce.webalyt.plugin.core.SimpleMessageProcessor;
-import cz.upce.webalyt.plugin.urlrecorder.entity.RecordedUrl;
-import cz.upce.webalyt.plugin.urlrecorder.repository.RecordedUrlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

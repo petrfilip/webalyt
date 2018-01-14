@@ -1,4 +1,4 @@
-package cz.upce.webalyt.plugin.urlrecorder;
+package cz.upce.webalyt.plugin.dom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,9 +14,9 @@ import java.util.concurrent.ExecutionException;
 @ComponentScan("cz.upce.webalyt")
 @EntityScan("cz.upce.webalyt")
 @EnableJpaRepositories(basePackages = {"cz.upce.webalyt"})
-public class UrlRecorderPluginApplication {
+public class DomRecorderPluginApplication {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        SpringApplication.run(UrlRecorderPluginApplication.class, args);
+        SpringApplication.run(DomRecorderPluginApplication.class, args);
     }
 }

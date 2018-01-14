@@ -1,7 +1,7 @@
 <#include "./common/header.ftl">
 
 
-            <a class="navbar-brand" onclick="openNav()">Webalyt</a>
+<a class="navbar-brand" onclick="openNav()">Webalyt</a>
 
 <h1>Sessions</h1>
 <#list sessionIds as item>

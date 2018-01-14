@@ -1,8 +1,8 @@
 package cz.upce.webalyt.plugin.csscollector;
 
+import cz.upce.webalyt.analytics.sessionplayertest.entity.CollectedCss;
+import cz.upce.webalyt.analytics.sessionplayertest.repository.CollectedCssRepository;
 import cz.upce.webalyt.plugin.core.SimpleMessageProcessor;
-import cz.upce.webalyt.plugin.urlrecorder.entity.CollectedCss;
-import cz.upce.webalyt.plugin.urlrecorder.repository.CollectedCssRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
