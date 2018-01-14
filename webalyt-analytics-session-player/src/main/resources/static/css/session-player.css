@@ -22,6 +22,41 @@
 }
 
 
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+    border: 0;
+}
+
+/*
+ * Sidebar
+ */
+
+.main {
+    padding: 20px;
+}
+
+.main .page-header {
+    margin-top: 0;
+}
+
+.navbar {
+    background-color: #eeeeee;
+}
+
+/* side navigation with loading performance, device info, etc...*/
 .session-sidenav {
     background-color: #f1f1f1;
     overflow-x: hidden;

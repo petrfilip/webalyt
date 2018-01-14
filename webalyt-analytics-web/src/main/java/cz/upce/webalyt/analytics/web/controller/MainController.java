@@ -31,7 +31,7 @@ public class MainController {
             routeTable.put(StringUtils.remove(plugin.getDefaultOperation(), '/'), plugin);
         }
         model.put("availablePlugins", plugins);
-        return "welcome";
+        return "index";
     }
 
     @PostMapping("/**")

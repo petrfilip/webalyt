@@ -10,28 +10,10 @@
 
     <title>Webalyt</title>
 
-
-
-
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
-    <link href="/css/dashboard.css" rel="stylesheet">
     <link href="/css/session-player.css" rel="stylesheet">
-    <script src="/js/main.js"></script>
-
-
-
 
 </head>
 
 <body>
-
-<div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="/session-player/">Session player</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-</div>
-

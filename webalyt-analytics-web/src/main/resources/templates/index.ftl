@@ -1,35 +1,6 @@
-<!DOCTYPE html>
+<#include "./common/header.ftl">
 
-<html lang="en">
-<head>
-    <style>
-        body {
-            margin: 0px;
-            padding: 0px;
-            background-color: aliceblue;
-            overflow:hidden"
-        }
-
-
-    </style>
-</head>
-
-<body>
-
-
-<#list availablePlugins as item>
-    <div>
-        <a onclick="loadContent('${item.getDefaultOperation()}');"> ${item.getName()}</a>
-    </div>
-<#else>
-  <p>No session recorded
-</#list>
-
-
-
-    <iframe width="100%" height="500px" id="iframe" style="border: 0px;"
-            src=""></iframe>
-
+    <iframe width="100%" height="500px" id="iframe" style="border: 0px;" src=""></iframe>
 
     <script>
 
@@ -73,6 +44,4 @@
         });
     </script>
 
-
-</body>
-</html>
+<#include "./common/footer.ftl">

@@ -10,7 +10,7 @@ spring:
       name: ${spring.application.name}, database, discovery-client, kafka
 
 webalyt:
-  serviceType: analytics
+  serviceType: core
   kafkaTopic: analytics-web
   objectId: analytics-web
 

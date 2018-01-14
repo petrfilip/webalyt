@@ -1,25 +1,25 @@
 <#include "./common/header.ftl">
 
-<nav class="navbar navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" onclick="openNav()">Webalyt</a>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-step-backward"></span>
-                </button>
-                <button type="button" class="btn btn-primary"><span
-                        class="glyphicon glyphicon-play"></span></button>
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-step-forward"></span>
-                </button>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary"><span
+                            class="glyphicon glyphicon-step-backward"></span>
+                    </button>
+                    <button type="button" class="btn btn-primary"><span
+                            class="glyphicon glyphicon-play"></span></button>
+                    <button type="button" class="btn btn-primary"><span
+                            class="glyphicon glyphicon-step-forward"></span>
+                    </button>
+                </div>
+                <div id="timeline">
+                    <div id="playhead"></div>
+                </div>
             </div>
-
-        <#--<div id="timeline">-->
-        <#--<div id="playhead"></div>-->
-        <#--</div>-->
         </div>
-    </div>
-</nav>
+    </nav>
 
 <div class="row">
     <div class="col-sm-2 session-sidenav">
